@@ -1,10 +1,17 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
+import { updateProfile } from "firebase/auth";
 import validation from "../utlis/validation";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../utlis/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const Name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
   const [gotvalidation, setgotvalidation] = useState("");
@@ -31,7 +38,22 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+
+          updateProfile(user, {
+            displayName: Name.current.value,
+            photoURL:
+              "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
           console.log(user);
+          navigate("/browse");
           // ...
         })
         .catch((error) => {
@@ -39,6 +61,24 @@ const Login = () => {
           const errorMessage = error.message;
           console.error("Firebase Error:", errorCode, errorMessage);
           // ..
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password?.current?.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error("Firebase Error:", errorCode, errorMessage);
         });
     }
   };
@@ -48,7 +88,7 @@ const Login = () => {
   return (
     <div
       className="bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/2e07bc25-8b8f-4531-8e1f-7e5e33938793/e4b3c14a-684b-4fc4-b14f-2b486a4e9f4e/IN-en-20240219-popsignuptwoweeks-perspective_alpha_website_large.jpg')] 
-      bg-contain h-screen"
+       h-screen"
     >
       <Header />
       <form
@@ -62,8 +102,9 @@ const Login = () => {
           {issignin ? (
             <input
               placeholder="Full name"
-              type="email"
+              type="text"
               className="px-3 py-4 w-full my-3 bg-gray-700 rounded-lg outline-slate-400 bg-opacity-65"
+              ref={Name}
             />
           ) : (
             ""
