@@ -7,10 +7,9 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utlis/firebase";
-import { useNavigate } from "react-router-dom";
+import { Profileurl } from "../utlis/constant";
 
 const Login = () => {
-  const navigate = useNavigate();
   const Name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -41,8 +40,7 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: Name.current.value,
-            photoURL:
-              "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg",
+            photoURL: Profileurl,
           })
             .then(() => {
               // Profile updated!
@@ -52,8 +50,7 @@ const Login = () => {
               // An error occurred
               // ...
             });
-          console.log(user);
-          navigate("/browse");
+
           // ...
         })
         .catch((error) => {
@@ -71,8 +68,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
           // ...
         })
         .catch((error) => {

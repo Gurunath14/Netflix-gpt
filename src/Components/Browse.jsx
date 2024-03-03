@@ -1,12 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Header from "./Header";
+import useNowPlayingMovies from "../Hooks/useNowPlayingMovies";
+import Maincontainer from "./Maincontainer";
+import SecondaryContainer from "./Secondarycontainer";
 
 const Browse = () => {
+  useNowPlayingMovies();
   return (
     <div>
       <Header />
-      <div className="name"></div>
+      <Maincontainer />
     </div>
   );
 };
