@@ -87,7 +87,7 @@ const Login = () => {
     >
       <Header />
       <form
-        className="flex justify-center items-center "
+        className="flex h-full justify-center items-center "
         onSubmit={(e) => e.preventDefault()}
       >
         <div className="flex flex-col justify-start bg-black w-4/12 px-10 py-20 text-white rounded-lg  bg-opacity-80">

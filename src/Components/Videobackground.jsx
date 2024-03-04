@@ -11,14 +11,15 @@ const Videobackground = ({ movieid }) => {
   return (
     <div>
       <iframe
-        frameBorder="0"
+        className="w-full aspect-video border-0"
         src={
           "https://www.youtube.com/embed/" +
           trailerselector?.key +
-          "?si=5wsO--aWp3EJbzQ-"
+          "?si=5wsO--aWp3EJbzQ-&autoplay=1&loop=1&modestbranding=1&controls=0&showinfo=0&mute=1&rel=0"
         }
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        style={{ border: "0" }}
       ></iframe>
     </div>
   );
