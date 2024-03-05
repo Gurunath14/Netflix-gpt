@@ -5,7 +5,6 @@ import Videotitle from "./Videotitle";
 const Maincontainer = () => {
   const Movies = useSelector((state) => state.movies?.nowplayingmovies);
   if (!Movies) return;
-  console.log(Movies[0]);
   const { original_title, overview, id } = Movies[0];
   return (
     <div>
