@@ -13,14 +13,14 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 
 const Movielist = ({ title, Movies }) => {
   return (
-    <div className="relative -mt-44">
+    <div className="relative -mt-44 z-50">
       <div className="px-3 ">
         <h1 className="text-white text-2xl py-2 font-bold">{title}</h1>
         <Swiper
           slidesPerView={6}
           cssMode={true}
           keyboard={true}
-          Mousewheel={true}
+          mousewheel={true}
           modules={[Navigation, Pagination, Mousewheel, Keyboard]}
           className="mySwiper"
         >
