@@ -3,8 +3,10 @@ import { Postercdn } from "../utlis/constant";
 
 const Moviecard = ({ gotmovies }) => {
   return (
-    <div className="w-48">
-      <img src={Postercdn + gotmovies} alt="" />
+    <div>
+      <div className="w-48 shadow-2xl ">
+        <img className="rounded-lg " src={Postercdn + gotmovies} alt="" />
+      </div>
     </div>
   );
 };
