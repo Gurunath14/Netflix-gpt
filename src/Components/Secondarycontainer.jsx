@@ -11,7 +11,7 @@ const SecondaryContainer = () => {
   const topmovies = useSelector((state) => state.movies.topmovies);
   return (
     <div className="bg-[#141414]">
-      <div className="flex flex-col gap-52">
+      <div className="flex flex-col gap-36">
         <Movielist
           title={"Now Playing"}
           Movies={Movieselector ? Movieselector : ""}
