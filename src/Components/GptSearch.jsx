@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import language from "../utlis/Language";
 import { useSelector } from "react-redux";
-import openai from "../utlis/openai";
 
 const GptSearch = () => {
   const ref = useRef(null);
