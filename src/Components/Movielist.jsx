@@ -22,16 +22,19 @@ const Movielist = ({ title, Movies }) => {
           keyboard={true}
           mousewheel={true}
           loop={true}
-          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+          grabCursor={true}
+          modules={[Pagination, Mousewheel, Keyboard]}
           className="mySwiper"
         >
-          {Movies
-            ? Movies.map((mapdata, index) => (
-                <SwiperSlide key={index}>
-                  <Moviecard gotmovies={mapdata.poster_path} />
-                </SwiperSlide>
-              ))
-            : ""}
+          <div className="p-4">
+            {Movies
+              ? Movies.map((mapdata, index) => (
+                  <SwiperSlide key={index}>
+                    <Moviecard gotmovies={mapdata.poster_path} />
+                  </SwiperSlide>
+                ))
+              : ""}
+          </div>
         </Swiper>
       </div>
     </div>

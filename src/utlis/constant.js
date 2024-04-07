@@ -11,3 +11,9 @@ export const MovieOptions = {
 };
 
 export const Postercdn = "https://image.tmdb.org/t/p/w500";
+export const languagesupport = [
+  { identiy: "en", value: "English" },
+  { identiy: "tamil", value: "Tamil" },
+  { identiy: "hindi", value: "Hindi" },
+  { identiy: "telugu", value: "Telugu" },
+];
